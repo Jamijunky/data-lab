@@ -1,36 +1,34 @@
 # Data Lab
 
-A practical, evolving repository for exploring the **data domain end-to-end** - from databases and data acquisition to processing, analytics, data mining, and machine learning.
+A repository for exploring the world of data, from databases and data processing to analytics, data mining, and machine learning.
 
-The objective is to develop a deep understanding of how data is created, stored, organized, processed, analyzed, and used to derive insights and support decisions.
+The goal is to understand how data is stored, managed, processed, analyzed, and used to solve real-world problems.
 
-This is not a repository focused on preparing for a single job role. It brings together concepts and practical work across **DBMS, data engineering, data analytics, data science, data warehousing, Big Data, and machine learning**.
-
-The emphasis is on understanding the underlying concepts, working with real-world datasets, building reproducible workflows, and connecting theory with practical implementation.
+This repository covers different areas of the data domain, including **DBMS, data engineering, data analytics, data science, data warehousing, Big Data, and machine learning**. The focus is on learning the concepts, applying them through practical projects, and understanding how these areas connect.
 
 ## Areas of Exploration
 
 | Area | Focus |
 |---|---|
 | Database Management Systems | Database design, relational models, SQL, transactions, indexing, and query optimization |
-| Data Engineering | Data acquisition, ingestion, cleaning, transformation, ETL/ELT, and pipeline development |
-| Data Warehousing & Data Mining | OLTP, OLAP, dimensional modeling, warehousing, aggregation, and mining techniques |
-| Big Data | Distributed data processing, scalable systems, and technologies such as Hadoop and Spark |
+| Data Engineering | Data ingestion, cleaning, transformation, ETL/ELT, and pipeline development |
+| Data Warehousing & Data Mining | OLTP, OLAP, dimensional modeling, data warehousing, and mining techniques |
+| Big Data | Distributed processing, scalable systems, Hadoop, and Spark |
 | Data Analytics | Exploratory data analysis, statistics, visualization, and extracting insights |
 | Data Science & Machine Learning | Data preprocessing, feature engineering, statistical modeling, and predictive analysis |
-| Data Systems | Storage formats, data architecture, processing engines, and the systems connecting these areas |
+| Data Systems | Storage formats, data architecture, processing engines, and how different systems work together |
 
-These areas overlap and complement each other. The repository will evolve as new concepts and practical projects are explored.
+These areas are closely connected, and the repository will expand as I explore more concepts and technologies.
 
 ## Current Project
 
 ### NYC Yellow Taxi Data Analysis
 
-**Dataset:** NYC Yellow Taxi Trip Records — January 2025
+**Dataset:** NYC Yellow Taxi Trip Records, January 2025
 
 **Source:** [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
-The initial project focuses on understanding a real-world dataset through SQL-based analysis, data quality investigation, and exploratory data analysis using DuckDB.
+The current project focuses on exploring a real-world dataset using SQL and DuckDB. It includes data profiling, data quality investigation, analytical queries, and exploratory data analysis.
 
 ### Analyses
 
@@ -46,7 +44,7 @@ The initial project focuses on understanding a real-world dataset through SQL-ba
 
 ## Technologies
 
-Currently used:
+Currently working with:
 
 - Python
 - SQL
@@ -56,7 +54,7 @@ Currently used:
 - Matplotlib
 - Parquet
 
-Additional technologies will be introduced as the projects and learning objectives expand.
+More technologies will be added as the projects and learning progress.
 
 ## Repository Structure
 
@@ -72,32 +70,20 @@ data-lab/
 └── README.md
 ```
 
-- `data/` — Local datasets, excluded from Git
-- `sql/` — Reproducible SQL queries and analyses
-- `python/` — Python scripts and data-processing utilities
-- `notebooks/` — Exploratory analysis and experiments
-- `docs/` — Methodology, findings, visualizations, and technical notes
+The `data` directory contains local datasets that are excluded from Git. SQL queries and Python scripts are maintained separately, while notebooks are used for exploration and the `docs` directory contains analysis reports, visualizations, and technical notes.
 
-## Workflow & Reproducibility
+## Workflow
 
-The repository follows a practical workflow:
+The general approach for each project is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis.
 
-1. Acquire and inspect real-world data.
-2. Understand its structure, schema, and limitations.
-3. Investigate missing values and data quality issues.
-4. Process and transform data where necessary.
-5. Perform analytical queries and exploratory analysis.
-6. Visualize and interpret results.
-7. Document findings, assumptions, and limitations.
-8. Keep the analysis reproducible through code and version control.
+Queries, scripts, and findings are documented so that the work can be reproduced and revisited later.
 
-Raw datasets are intentionally excluded from Git. Dataset sources and instructions for obtaining the data are documented where relevant.
+Raw datasets are kept out of Git. Their sources and download instructions are documented where relevant.
 
 ## Learning Philosophy
 
-The focus is not simply on completing tutorials or collecting technologies.
+The aim is to understand concepts beyond just writing code or completing tutorials.
 
-The goal is to understand **why systems work the way they do**, how different data technologies fit together, and how theoretical concepts translate into practical workflows.
+I want to understand how different data technologies work, why they are used, and how they fit together in real-world systems.
 
-This repository will grow alongside that understanding — from foundational database concepts to large-scale data systems, analytics, and machine learning.
-
+This repository will continue to grow as I explore databases, data pipelines, analytical systems, large-scale data processing, and machine learning through practical work.
