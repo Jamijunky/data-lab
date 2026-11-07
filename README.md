@@ -99,3 +99,14 @@ Detailed methodology, findings, and limitations are documented separately from t
 ## SQL Queries
 
 - [Initial Data Profiling Queries](sql/01_data_profiling.sql)
+
+## Analysis Reports
+
+Detailed methodology, findings, and limitations are documented separately from the SQL queries.
+
+- [Initial Data Profiling](docs/01_initial_profiling.md)
+- [Trip Duration Analysis](docs/02_trip_duration_analysis.md)
+
+## SQL Queries
+
+- [Initial Data Profiling Queries](sql/01_data_profiling.sql)
