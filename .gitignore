@@ -1,0 +1,14 @@
+# Dataset files
+data/raw/
+data/processed/
+
+# Python environment
+.venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
