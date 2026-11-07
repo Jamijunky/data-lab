@@ -110,3 +110,4 @@ Detailed methodology, findings, and limitations are documented separately from t
 ## SQL Queries
 
 - [Initial Data Profiling Queries](sql/01_data_profiling.sql)
+- [Trip Duration Analysis Queries](sql/02_trip_duration_analysis.sql)
