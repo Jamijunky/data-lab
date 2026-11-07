@@ -1,113 +1,103 @@
-# Data Engineering Learning Lab
+# Data Lab
 
-A hands-on learning repository focused on data engineering, analytics,
-data warehousing, SQL, Python, and related data technologies.
+A practical, evolving repository for exploring the **data domain end-to-end** - from databases and data acquisition to processing, analytics, data mining, and machine learning.
 
-The project uses real-world datasets to explore data processing,
-data quality, analytical queries, and engineering concepts.
+The objective is to develop a deep understanding of how data is created, stored, organized, processed, analyzed, and used to derive insights and support decisions.
 
-## Current Dataset
+This is not a repository focused on preparing for a single job role. It brings together concepts and practical work across **DBMS, data engineering, data analytics, data science, data warehousing, Big Data, and machine learning**.
 
-NYC Yellow Taxi Trip Records - January 2025
+The emphasis is on understanding the underlying concepts, working with real-world datasets, building reproducible workflows, and connecting theory with practical implementation.
 
-Source:
-https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+## Areas of Exploration
 
-## Current Progress
+| Area | Focus |
+|---|---|
+| Database Management Systems | Database design, relational models, SQL, transactions, indexing, and query optimization |
+| Data Engineering | Data acquisition, ingestion, cleaning, transformation, ETL/ELT, and pipeline development |
+| Data Warehousing & Data Mining | OLTP, OLAP, dimensional modeling, warehousing, aggregation, and mining techniques |
+| Big Data | Distributed data processing, scalable systems, and technologies such as Hadoop and Spark |
+| Data Analytics | Exploratory data analysis, statistics, visualization, and extracting insights |
+| Data Science & Machine Learning | Data preprocessing, feature engineering, statistical modeling, and predictive analysis |
+| Data Systems | Storage formats, data architecture, processing engines, and the systems connecting these areas |
 
-- Set up Python virtual environment
-- Installed DuckDB, Pandas, and PyArrow
-- Inspected Parquet dataset metadata
-- Queried the dataset using DuckDB
-- Investigated missing passenger-count values
-- Analyzed passenger-count distribution
+These areas overlap and complement each other. The repository will evolve as new concepts and practical projects are explored.
 
-## Project Structure
+## Current Project
 
-- `data/`: Local datasets, excluded from Git
-- `sql/`: SQL analysis
-- `python/`: Python scripts
-- `notebooks/`: Exploratory analysis
-- `docs/`: Concepts, explanations, and learning notes
+### NYC Yellow Taxi Data Analysis
 
-## Reproducibility
+**Dataset:** NYC Yellow Taxi Trip Records — January 2025
 
-Download the dataset from the official NYC TLC source.
-Raw and processed datasets are intentionally excluded from Git.
+**Source:** [NYC Taxi and Limousine Commission](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
-This repository documents an ongoing learning process.
+The initial project focuses on understanding a real-world dataset through SQL-based analysis, data quality investigation, and exploratory data analysis using DuckDB.
 
-## Current Progress: Initial Data Profiling
-
-Dataset: NYC TLC Yellow Taxi Trip Records, January 2025.
-
-### Dataset Overview
-
-- Total records in the Parquet file: 3,475,226
-- January 2025 pickup records: 3,475,204
-- December 2024 boundary records: 21
-- February 2025 boundary records: 1
-- January passenger-count missingness: 540,149 records (15.54%)
-
-The file was checked against its actual pickup timestamps rather than relying exclusively on its filename.
-
-### Data Quality Investigation
-
-Initial profiling covered:
-
-- Dataset row count and timestamp range
-- Missing-value analysis
-- Passenger-count distribution
-- Unusual passenger-count values
-- Missingness by vendor
-- Trip distance and fare distributions
-- Mean versus median comparisons
-- Distance percentiles
-- Extreme trip-distance records
-
-### Key Findings
-
-- Passenger-count missingness varies across vendors.
-- Vendor 1 has a substantially higher zero-passenger reporting rate than Vendor 2.
-- Vendor 6 has missing passenger counts for all 489 records in this dataset.
-- Missing passenger counts should not automatically be imputed with the most common value.
-- Extreme trip distances exist in multiple vendors.
-- Some extreme distances coincide with missing passenger counts, but the relationship is not exclusive.
-- The extreme distance records appear inconsistent with their recorded trip durations and fares.
-
-Suspicious records are being investigated rather than automatically deleted or modified. The raw dataset remains unchanged.
-
-### Concepts Practiced
-
-- SQL aggregation and filtering
-- GROUP BY and conditional aggregation
-- NULL handling
-- Date and timestamp filtering
-- Half-open timestamp intervals
-- Mean, median, and percentiles
-- Data profiling and anomaly detection
-- Vendor-level comparisons
-- Exploratory data analysis with DuckDB
-
-## Analysis Reports
-
-Detailed methodology, findings, and limitations are documented separately from the SQL queries.
+### Analyses
 
 - [Initial Data Profiling](docs/01_initial_profiling.md)
 - [Trip Duration Analysis](docs/02_trip_duration_analysis.md)
+- [Hourly Taxi Demand Analysis](docs/03_hourly_taxi_demand.md)
 
-## SQL Queries
+### SQL Queries
 
-- [Initial Data Profiling Queries](sql/01_data_profiling.sql)
+- [Initial Data Profiling](sql/01_data_profiling.sql)
+- [Trip Duration Analysis](sql/02_trip_duration_analysis.sql)
+- [Hourly Taxi Demand Analysis](sql/03_hourly_taxi_demand.sql)
 
-## Analysis Reports
+## Technologies
 
-Detailed methodology, findings, and limitations are documented separately from the SQL queries.
+Currently used:
 
-- [Initial Data Profiling](docs/01_initial_profiling.md)
-- [Trip Duration Analysis](docs/02_trip_duration_analysis.md)
+- Python
+- SQL
+- DuckDB
+- Pandas
+- PyArrow
+- Matplotlib
+- Parquet
 
-## SQL Queries
+Additional technologies will be introduced as the projects and learning objectives expand.
 
-- [Initial Data Profiling Queries](sql/01_data_profiling.sql)
-- [Trip Duration Analysis Queries](sql/02_trip_duration_analysis.sql)
+## Repository Structure
+
+```text
+data-lab/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── sql/
+├── python/
+├── notebooks/
+├── docs/
+└── README.md
+```
+
+- `data/` — Local datasets, excluded from Git
+- `sql/` — Reproducible SQL queries and analyses
+- `python/` — Python scripts and data-processing utilities
+- `notebooks/` — Exploratory analysis and experiments
+- `docs/` — Methodology, findings, visualizations, and technical notes
+
+## Workflow & Reproducibility
+
+The repository follows a practical workflow:
+
+1. Acquire and inspect real-world data.
+2. Understand its structure, schema, and limitations.
+3. Investigate missing values and data quality issues.
+4. Process and transform data where necessary.
+5. Perform analytical queries and exploratory analysis.
+6. Visualize and interpret results.
+7. Document findings, assumptions, and limitations.
+8. Keep the analysis reproducible through code and version control.
+
+Raw datasets are intentionally excluded from Git. Dataset sources and instructions for obtaining the data are documented where relevant.
+
+## Learning Philosophy
+
+The focus is not simply on completing tutorials or collecting technologies.
+
+The goal is to understand **why systems work the way they do**, how different data technologies fit together, and how theoretical concepts translate into practical workflows.
+
+This repository will grow alongside that understanding — from foundational database concepts to large-scale data systems, analytics, and machine learning.
+
