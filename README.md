@@ -88,3 +88,14 @@ Suspicious records are being investigated rather than automatically deleted or m
 - Data profiling and anomaly detection
 - Vendor-level comparisons
 - Exploratory data analysis with DuckDB
+
+## Analysis Reports
+
+Detailed methodology, findings, and limitations are documented separately from the SQL queries.
+
+- [Initial Data Profiling](docs/01_initial_profiling.md)
+- [Trip Duration Analysis](docs/02_trip_duration_analysis.md)
+
+## SQL Queries
+
+- [Initial Data Profiling Queries](sql/01_data_profiling.sql)
