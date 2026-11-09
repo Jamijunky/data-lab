@@ -4,7 +4,7 @@ A repository for exploring the world of data, from databases and data processing
 
 The goal is to understand how data is stored, managed, processed, analyzed, and used to solve real-world problems.
 
-This repository covers different areas of the data domain, including DBMS, data engineering, data analytics, data science, data warehousing, Big Data, and machine learning. The focus is on learning the concepts, applying them through practical projects, and understanding how these areas connect.
+This repository covers different areas of the data domain, including DBMS, data engineering, data analytics, data science, data warehousing, Big Data, and machine learning. The focus is on learning the concepts, applying them through hands-on analysis, and understanding how these areas connect.
 
 ## Areas of Exploration
 
@@ -20,7 +20,7 @@ This repository covers different areas of the data domain, including DBMS, data 
 
 These areas are closely connected, and the repository will expand as I explore more concepts and technologies.
 
-## Current Project
+## Current Learning Focus
 
 ### NYC Yellow Taxi Data Analysis
 
@@ -28,20 +28,20 @@ These areas are closely connected, and the repository will expand as I explore m
 
 **Source:** NYC Taxi and Limousine Commission
 
-The current project focuses on exploring a real-world dataset using SQL and DuckDB. It includes data profiling, data quality investigation, data cleaning, analytical queries, and exploratory data analysis.
+The current learning focus involves exploring a real-world dataset using SQL and DuckDB. It includes data profiling, data quality investigation, data cleaning, analytical queries, and exploratory data analysis.
 
-### Analyses
+## Analyses
 
-#### 01. Initial Data Profiling
+### 01. Initial Data Profiling
 
 - Dataset structure, schema, and record counts
 - Missing-value analysis and passenger-count distribution
 - Vendor-level missingness
 - Initial exploration of trip distance and numerical variables
 
-[Documentation](docs/01_initial_profiling.md) | [SQL](sql/01_data_profiling.sql)
+Documentation | SQL
 
-#### 02. Trip Duration Analysis
+### 02. Trip Duration Analysis
 
 - Deriving trip duration from pickup and dropoff timestamps
 - Identifying invalid timestamp relationships
@@ -49,25 +49,25 @@ The current project focuses on exploring a real-world dataset using SQL and Duck
 - Filtering invalid-duration records
 - Creating and validating the duration-cleaned dataset
 
-[Documentation](docs/02_trip_duration_analysis.md) | [SQL](sql/02_trip_duration_analysis.sql)
+Documentation | SQL
 
-#### 03. Hourly Taxi Demand
+### 03. Hourly Taxi Demand
 
 - Analyzing taxi demand by hour
 - Identifying hourly demand patterns
 - Visualizing temporal demand distribution
 
-[Documentation](docs/03_hourly_taxi_demand.md) | [SQL](sql/03_hourly_taxi_demand.sql) | [Visualization](docs/hourly_taxi_demand.png)
+Documentation | SQL | Visualization
 
-#### 04. Weekday vs Weekend Demand
+### 04. Weekday vs Weekend Demand
 
 - Comparing hourly demand between weekdays and weekends
 - Investigating differences in temporal demand patterns
 - Visualizing weekday and weekend demand
 
-[Documentation](docs/04_weekday_weekend_hourly_demand.md) | [SQL](sql/04_weekday_weekend_hourly_demand.sql) | [Visualization](docs/weekday_weekend_hourly_demand.png)
+Documentation | SQL | Visualization
 
-#### 05. Distance Anomaly Analysis
+### 05. Distance Anomaly Analysis
 
 - Investigating passenger-count missingness and vendor-level differences
 - Comparing trip distances for records with missing and nonmissing passenger counts
@@ -76,11 +76,22 @@ The current project focuses on exploring a real-world dataset using SQL and Duck
 - Calculating implied average speeds to detect physically implausible measurements
 - Establishing a distance-validity rule for analytical use
 
-[Documentation](docs/05_distance_anomaly_analysis.md) | [SQL](sql/05_distance_anomaly_analysis.sql)
+Documentation | SQL
+
+### 06. Financial Anomaly Analysis
+
+- Identifying negative fare amounts and negative total amounts
+- Investigating financial anomalies by vendor and payment type
+- Examining the relationship between negative fares, trip distance, and duration
+- Analyzing repeated negative fare values and financial components
+- Distinguishing statistical anomalies from business-rule violations
+- Identifying suspicious records for further investigation without automatically deleting them
+
+Documentation | SQL
 
 ## Data Processing
 
-The project preserves the original dataset separately from processed datasets.
+The original dataset is preserved separately from processed datasets.
 
 | Processing Stage | Records |
 |---|---:|
@@ -90,9 +101,13 @@ The project preserves the original dataset separately from processed datasets.
 
 The duration-cleaned dataset excludes 124 records with invalid trip durations.
 
-The distance-anomaly investigation identified 899 additional records with calculated average speeds above 100 mph. These records were identified for exclusion from distance-based analysis.
+The distance-anomaly investigation identified 899 additional records with calculated average speeds above 100 mph. These records were flagged for investigation and potential exclusion from distance-based analysis.
 
 Distance-based exclusions are analysis-specific and do not overwrite the original dataset or duration-cleaned dataset.
+
+The financial anomaly investigation identified 144,118 records with negative fare amounts and 63,037 records with negative total amounts. All negative-fare records belonged to Vendor 2, with substantial concentrations across specific payment types.
+
+These financial records are flagged for investigation rather than automatically removed. The available data does not establish whether every negative value represents a refund, reversal, correction, dispute, or data-quality issue.
 
 ## Technologies
 
@@ -107,7 +122,7 @@ Currently working with:
 - Parquet
 - Git and GitHub
 
-More technologies will be added as the projects and learning progress.
+More technologies will be added as the learning progresses.
 
 ## Repository Structure
 
@@ -123,11 +138,11 @@ data-lab/
 └── README.md
 ```
 
-The data directory contains local datasets that are excluded from Git. SQL queries and Python scripts are maintained separately, while notebooks are used for exploration and the docs directory contains analysis reports, visualizations, and technical notes.
+The data directory contains local datasets that are excluded from Git. SQL queries and Python scripts are maintained separately, while notebooks are used for exploration and the docs directory contains learning journals, visualizations, and technical notes.
 
 ## Workflow
 
-The general approach for each project is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis.
+The general approach for each learning iteration is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis.
 
 Queries, scripts, and findings are documented so that the work can be reproduced and revisited later.
 
@@ -139,9 +154,8 @@ The aim is to understand concepts beyond just writing code or completing tutoria
 
 I want to understand how different data technologies work, why they are used, and how they fit together in real-world systems.
 
-This repository will continue to grow as I explore databases, data pipelines, analytical systems, large-scale data processing, and machine learning through practical work.
+This repository will continue to grow as I explore databases, data pipelines, analytical systems, large-scale data processing, and machine learning through practical learning and hands-on analysis.
 
 ## Future Work
 
-The project will continue with more advanced data cleaning, transformation, exploratory analysis, data engineering pipelines, data warehousing, and eventually machine learning.
-
+The learning journey will continue with more advanced data cleaning, transformation, exploratory analysis, data engineering pipelines, data warehousing, and eventually machine learning.
