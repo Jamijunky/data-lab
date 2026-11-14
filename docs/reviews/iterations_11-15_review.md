@@ -229,3 +229,37 @@ From the engineering side, I learned that a repeatable pipeline needs explicit i
 Most importantly, I learned that data engineering and analytics are connected. Data quality determines what we can trust, enrichment provides additional context, SQL allows us to investigate patterns, and pipelines make the preparation process repeatable. The final responsibility is to explain what the analysis establishes, what assumptions it depends on, and what remains uncertain.
 
 The goal of this learning cycle was not merely to complete fifteen iterations. It was to develop the ability to take an unfamiliar dataset, investigate its structure and quality, transform it responsibly, perform increasingly sophisticated analysis, automate repeatable operations, and explain the reasoning behind the entire process.
+
+## What did the final duration validation reveal about zero-duration trips?
+
+The final synthesis reported 1,927 records with nonpositive trip duration. We investigated those records separately instead of assuming that they were all negative-duration trips.
+
+The result showed that all 1,927 records had exactly zero duration, while the number of negative-duration records was zero. This is consistent with the cleaning condition used by our pipeline: `tpep_dropoff_datetime >= tpep_pickup_datetime`. That condition rejects drop-off timestamps earlier than pickup timestamps, but it allows both timestamps to be equal.
+
+This distinction matters. Our pipeline enforced chronological validity, not strictly positive duration. A zero-duration record satisfies the first rule but may still be unsuitable for analyses that require a trip to have actually elapsed. We should therefore describe the existing rule accurately rather than retroactively claiming that zero-duration trips were removed.
+
+## What did we discover about missing RatecodeID values?
+
+We grouped records by `payment_type` and counted missing and present `RatecodeID` values. The result showed that all 540,031 records with `payment_type = 0` had a missing `RatecodeID`. Every record in payment types 1, 2, 3, 4, and 5 had a present rate code.
+
+This is an exact association in the January 2025 enriched dataset. It is useful because it shows that the missing rate-code values are not distributed randomly across the payment categories in this dataset.
+
+However, this query establishes association, not cause. It does not explain why payment type 0 has missing rate codes, nor does it prove that payment type 0 causes the missingness. The correct conclusion is limited to the observed relationship.
+
+## Why did the Bronx-to-Bronx average distance look so unrealistic?
+
+The borough-level origin-destination analysis reported 5,739 Bronx-to-Bronx trips with an average distance of 117.90 miles. That average did not make sense for trips whose pickup and drop-off boroughs were both the Bronx, so we investigated the underlying records rather than accepting the aggregate at face value.
+
+The median distance was only 2.87 miles, while the maximum recorded distance was 121,555.16 miles. We then inspected the 20 longest Bronx-to-Bronx trips. The eight records above 100 miles had recorded distances ranging from 49,608.92 to 121,555.16 miles, despite durations of only 5 to 23 minutes. Their calculated average speeds were physically impossible. All eight displayed records had `VendorID = 2` and missing passenger counts. These shared characteristics are observations about those eight records, not proof that every record from Vendor 2 is unreliable.
+
+A further comparison quantified the effect on the average. There were only 8 trips above 100 miles out of 5,739, approximately 0.139% of the group. Excluding those eight observations reduced the average distance from 117.90 miles to 3.74 miles. The median remained 2.87 miles.
+
+This is a concrete example of how a very small number of extreme observations can dominate the arithmetic mean. The median was much more representative of the central distance in this group. The 100-mile cutoff was used as an investigation filter; it should not be presented as a universally valid rule for every trip or every borough pair. The filtered average is a diagnostic comparison, not proof that every remaining trip is valid.
+
+## What do these investigations teach us about interpreting analytical results?
+
+The final investigations showed that an aggregate can be mathematically correct and still be misleading when the underlying records contain anomalies. The Bronx-to-Bronx average was calculated correctly from the recorded values, but it did not describe a typical trip. Looking at the median and then inspecting the extreme records exposed the reason.
+
+They also showed why a cleaning rule must be described precisely. The pipeline removed records with negative chronological ordering, but retained zero-duration records. Similarly, the relationship between payment type 0 and missing rate codes is strong in this dataset, but the query does not establish its cause.
+
+The broader lesson is to move between levels of analysis: use aggregates to identify patterns, use distributions and comparisons to test whether those patterns are representative, and return to individual records when an aggregate looks suspicious. A threshold can help investigate a problem, but it must remain an explicit analytical choice rather than being mistaken for ground truth.
