@@ -28,7 +28,7 @@ These areas are closely connected, and the repository will expand as I explore m
 
 **Source:** NYC Taxi and Limousine Commission
 
-The current learning focus involves exploring a real-world dataset using SQL and DuckDB. It includes data profiling, data quality investigation, data cleaning, analytical queries, geographical enrichment, advanced SQL, and data engineering pipeline development.
+The current learning focus involves exploring a real-world dataset using SQL, Python, and DuckDB. It started with data profiling and analytical investigation and gradually expanded into data cleaning, pipeline development, dimensional modeling, data warehousing, OLAP operations, and incremental data loading.
 
 ## Analyses
 
@@ -39,7 +39,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Vendor-level missingness
 - Initial exploration of trip distance and numerical variables
 
-[Documentation](docs/01_initial_profiling.md) | [SQL](sql/01_initial_profiling.sql)
+Documentation | SQL
 
 ### 02. Trip Duration Analysis
 
@@ -49,7 +49,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Filtering invalid-duration records
 - Creating and validating the duration-cleaned dataset
 
-[Documentation](docs/02_trip_duration_analysis.md) | [SQL](sql/02_trip_duration_analysis.sql)
+Documentation | SQL
 
 ### 03. Hourly Taxi Demand
 
@@ -57,7 +57,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Identifying hourly demand patterns
 - Visualizing temporal demand distribution
 
-[Documentation](docs/03_hourly_taxi_demand.md) | [SQL](sql/03_hourly_taxi_demand.sql) | Visualization
+Documentation | SQL | Visualization
 
 ### 04. Weekday vs Weekend Demand
 
@@ -65,7 +65,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Investigating differences in temporal demand patterns
 - Visualizing weekday and weekend demand
 
-[Documentation](docs/04_weekday_weekend_hourly_demand.md) | [SQL](sql/04_weekday_weekend_hourly_demand.sql) | Visualization
+Documentation | SQL | Visualization
 
 ### 05. Distance Anomaly Analysis
 
@@ -76,7 +76,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Calculating implied average speeds to detect physically implausible measurements
 - Establishing a distance-validity rule for analytical use
 
-[Documentation](docs/05_distance_anomaly_analysis.md) | [SQL](sql/05_distance_anomaly_analysis.sql)
+Documentation | SQL
 
 ### 06. Financial Anomaly Analysis
 
@@ -87,7 +87,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Distinguishing statistical anomalies from business-rule violations
 - Identifying suspicious records for further investigation without automatically deleting them
 
-[Documentation](docs/06_financial_anomaly_analysis.md) | [SQL](sql/06_financial_anomaly_analysis.sql)
+Documentation | SQL
 
 ### 07. Fare and Tip Analysis
 
@@ -97,7 +97,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Investigating credit-card tip distributions
 - Understanding limitations in recorded tip data, particularly cash tips
 
-[Documentation](docs/07_fare_and_tip_analysis.md) | [SQL](sql/07_fare_and_tip_analysis.sql)
+Documentation | SQL
 
 ### 08. Pickup and Drop-off Location Analysis
 
@@ -107,7 +107,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Examining location-level demand by hour
 - Comparing trip distance and duration across pickup locations
 
-[Documentation](docs/08_pickup_dropoff_location_analysis.md) | [SQL](sql/08_pickup_dropoff_location_analysis.sql)
+Documentation | SQL
 
 ### 09. Rate Code and Fare Component Analysis
 
@@ -117,7 +117,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Reconstructing candidate trip totals and comparing them with recorded totals
 - Investigating congestion charges and their distribution across time and pickup locations
 
-[Documentation](docs/09_rate_code_and_fare_component_analysis.md) | [SQL](sql/09_rate_code_and_fare_component_analysis.sql)
+Documentation | SQL
 
 ### 10. Time-Based Demand and Fare Analysis
 
@@ -127,7 +127,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Examining fare and recorded tip distributions over time
 - Comparing weekday rush-hour activity with other periods
 
-[Documentation](docs/10_time_based_demand_and_fare_analysis.md) | [SQL](sql/10_time_based_demand_and_fare_analysis.sql)
+Documentation | SQL
 
 ### 11. Data Quality and Cleaning Audit
 
@@ -140,7 +140,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Identifying candidate duplicate records
 - Creating consolidated row-level data quality flags
 
-[Documentation](docs/11_data_quality_and_cleaning_audit.md) | [SQL](sql/11_data_quality_and_cleaning_audit.sql)
+Documentation | SQL
 
 ### 12. Taxi Zone Enrichment and Borough-Level Analysis
 
@@ -152,19 +152,19 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Identifying high-demand zones and borough-level origin-destination patterns
 - Examining trip characteristics across geographical areas
 
-[Documentation](docs/12_taxi_zone_enrichment_and_borough_analysis.md) | [SQL](sql/12_taxi_zone_enrichment_and_borough_analysis.sql)
+Documentation | SQL
 
 ### 13. Advanced Analytical SQL
 
 - Organizing complex queries using Common Table Expressions
-- Applying `ROW_NUMBER`, `RANK`, and `DENSE_RANK`
+- Applying ROW_NUMBER, RANK, and DENSE_RANK
 - Ranking pickup zones within boroughs
 - Calculating running totals and cumulative demand
-- Using `LAG` for consecutive-period comparisons
+- Using LAG for consecutive-period comparisons
 - Comparing individual zones against group-level averages
 - Applying window functions for analytical comparisons and rankings
 
-[Documentation](docs/13_advanced_analytical_sql.md) | [SQL](sql/13_advanced_analytical_sql.sql)
+Documentation | SQL
 
 ### 14. Repeatable Data Engineering Pipeline
 
@@ -176,7 +176,7 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Handling existing output files during repeated execution
 - Exploring repeatability and idempotency in local data pipelines
 
-[Documentation](docs/14_repeatable_data_engineering_pipeline.md) | [Python](python/14_taxi_data_pipeline.py) | [SQL Validation](sql/14_pipeline_validation.sql)
+Documentation | Python | SQL Validation
 
 ### 15. Final Analytical Synthesis and Learning Review
 
@@ -188,7 +188,41 @@ The current learning focus involves exploring a real-world dataset using SQL and
 - Bringing data quality observations into the final analysis
 - Validating relationships between raw, cleaned, and enriched datasets
 
-[Documentation](docs/15_final_analytical_synthesis_and_learning_review.md) | [SQL](sql/15_final_analytical_synthesis.sql)
+Documentation | SQL
+
+### 16. Dimensional Modeling and Data Warehouse
+
+- Designing a dimensional model around the enriched taxi dataset
+- Creating a star schema with one fact table and multiple dimension tables
+- Building `fact_trips`, `dim_date`, `dim_location`, `dim_payment`, and `dim_vendor`
+- Implementing surrogate keys and mapping source records to dimension keys
+- Modeling pickup and drop-off dates and locations using role-playing dimensions
+- Validating fact-table row counts, financial totals, duplicate trip keys, and dimension references
+- Inspecting the resulting warehouse schema and understanding the distinction between SQL validation and database-enforced constraints
+
+Documentation | SQL | Python
+
+### 17. OLAP Operations
+
+- Applying roll-up and drill-down operations to the dimensional warehouse
+- Aggregating trip counts and revenue across boroughs and individual taxi zones
+- Exploring slice and dice operations using dimensional attributes
+- Understanding pivoting through SQL aggregation
+- Using fact and dimension tables to perform multidimensional analysis
+
+Documentation | SQL
+
+### 18. Incremental Data Loading
+
+- Exploring incremental loading as an alternative to rebuilding the entire warehouse
+- Designing a batch-loading workflow using the enriched Parquet dataset
+- Maintaining a load ledger to track processed batches
+- Adding new dimension members before inserting corresponding fact records
+- Checking duplicate batches and overlapping date ranges
+- Validating inserted records, financial totals, and dimension references
+- Implementing transaction-based loading and rollback handling
+
+Documentation | SQL | Python
 
 ## Learning Reviews
 
@@ -196,9 +230,11 @@ Consolidated reviews are maintained separately from individual iteration documen
 
 | Review | Coverage |
 |---|---|
-| [Learning Review 1](docs/reviews/iterations_01-05_review.md) | Iterations 1–5 |
-| [Learning Review 2](docs/reviews/iterations_06-10_review.md) | Iterations 6–10 |
-| [Learning Review 3](docs/reviews/iterations_11-15_review.md) | Iterations 11–15 |
+| Learning Review 1 | Iterations 1–5 |
+| Learning Review 2 | Iterations 6–10 |
+| Learning Review 3 | Iterations 11–15 |
+
+The next consolidated review will cover Iterations 16–20.
 
 ## Data Processing
 
@@ -221,6 +257,24 @@ The financial anomaly investigation identified 144,118 records with negative far
 These financial records are flagged for investigation rather than automatically removed. The available data does not establish whether every negative value represents a refund, reversal, correction, dispute, or data-quality issue.
 
 The processing workflow also includes a geographically enriched dataset created using the NYC TLC taxi zone lookup table. This adds zone and borough information to the cleaned trip records for geographical analysis.
+
+## Data Warehouse
+
+The warehouse was built using DuckDB and follows a star schema.
+
+| Table | Rows |
+|---|---:|
+| `fact_trips` | 3,475,080 |
+| `dim_date` | 33 |
+| `dim_location` | 263 |
+| `dim_payment` | 7 |
+| `dim_vendor` | 5 |
+
+The fact table contains one record per enriched source trip record.
+
+Validation included comparing source and warehouse row counts, checking financial aggregates, checking duplicate trip keys, and verifying dimension references. All validation checks passed during the initial warehouse build.
+
+The warehouse also provides the foundation for OLAP queries and subsequent incremental loading exercises.
 
 ## Technologies
 
@@ -254,7 +308,10 @@ data-lab/
 │   │   └── iterations_11-15_review.md
 │   ├── 01_initial_profiling.md
 │   ├── ...
-│   └── 15_final_analytical_synthesis_and_learning_review.md
+│   ├── 15_final_analytical_synthesis_and_learning_review.md
+│   ├── 16_dimensional_modeling_star_schema.md
+│   ├── 17_olap_operations.md
+│   └── 18_incremental_data_loading.md
 └── README.md
 ```
 
@@ -262,7 +319,7 @@ The data directory contains local datasets that are excluded from Git. SQL queri
 
 ## Workflow
 
-The general approach for each learning iteration is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis.
+The general approach for each learning iteration is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis or implement the relevant data engineering concepts.
 
 Queries, scripts, and findings are documented so that the work can be reproduced and revisited later.
 
@@ -278,5 +335,6 @@ This repository will continue to grow as I explore databases, data pipelines, an
 
 ## Future Work
 
-The learning journey will continue with more advanced data cleaning, transformation, exploratory analysis, data engineering pipelines, data warehousing, distributed processing, and eventually machine learning.
+The learning journey will continue with physical data organization, partitioning, query optimization, advanced data engineering, API ingestion, ETL/ELT, workflow orchestration, distributed processing, cloud data platforms, streaming systems, and eventually machine learning.
 
+The goal is to progress from analyzing datasets and building local data pipelines toward understanding and implementing reliable, scalable data systems.
