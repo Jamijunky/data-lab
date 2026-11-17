@@ -28,7 +28,7 @@ These areas are closely connected, and the repository will expand as I explore m
 
 **Source:** NYC Taxi and Limousine Commission
 
-The current learning focus involves exploring a real-world dataset using SQL, Python, and DuckDB. It started with data profiling and analytical investigation and gradually expanded into data cleaning, pipeline development, dimensional modeling, data warehousing, OLAP operations, and incremental data loading.
+The current learning focus involves exploring a real-world dataset using SQL and DuckDB. It includes data profiling, data quality investigation, data cleaning, analytical queries, geographical enrichment, advanced SQL, and data engineering pipeline development.
 
 ## Analyses
 
@@ -39,7 +39,7 @@ The current learning focus involves exploring a real-world dataset using SQL, Py
 - Vendor-level missingness
 - Initial exploration of trip distance and numerical variables
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 02. Trip Duration Analysis
 
@@ -49,7 +49,7 @@ Documentation | SQL
 - Filtering invalid-duration records
 - Creating and validating the duration-cleaned dataset
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 03. Hourly Taxi Demand
 
@@ -57,7 +57,7 @@ Documentation | SQL
 - Identifying hourly demand patterns
 - Visualizing temporal demand distribution
 
-Documentation | SQL | Visualization
+[Documentation](docs/) | [SQL](sql/) | [Visualization](docs/)
 
 ### 04. Weekday vs Weekend Demand
 
@@ -65,7 +65,7 @@ Documentation | SQL | Visualization
 - Investigating differences in temporal demand patterns
 - Visualizing weekday and weekend demand
 
-Documentation | SQL | Visualization
+[Documentation](docs/) | [SQL](sql/) | [Visualization](docs/)
 
 ### 05. Distance Anomaly Analysis
 
@@ -76,7 +76,7 @@ Documentation | SQL | Visualization
 - Calculating implied average speeds to detect physically implausible measurements
 - Establishing a distance-validity rule for analytical use
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 06. Financial Anomaly Analysis
 
@@ -87,7 +87,7 @@ Documentation | SQL
 - Distinguishing statistical anomalies from business-rule violations
 - Identifying suspicious records for further investigation without automatically deleting them
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 07. Fare and Tip Analysis
 
@@ -97,7 +97,7 @@ Documentation | SQL
 - Investigating credit-card tip distributions
 - Understanding limitations in recorded tip data, particularly cash tips
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 08. Pickup and Drop-off Location Analysis
 
@@ -107,7 +107,7 @@ Documentation | SQL
 - Examining location-level demand by hour
 - Comparing trip distance and duration across pickup locations
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 09. Rate Code and Fare Component Analysis
 
@@ -117,7 +117,7 @@ Documentation | SQL
 - Reconstructing candidate trip totals and comparing them with recorded totals
 - Investigating congestion charges and their distribution across time and pickup locations
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 10. Time-Based Demand and Fare Analysis
 
@@ -127,7 +127,7 @@ Documentation | SQL
 - Examining fare and recorded tip distributions over time
 - Comparing weekday rush-hour activity with other periods
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 11. Data Quality and Cleaning Audit
 
@@ -140,7 +140,7 @@ Documentation | SQL
 - Identifying candidate duplicate records
 - Creating consolidated row-level data quality flags
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 12. Taxi Zone Enrichment and Borough-Level Analysis
 
@@ -152,7 +152,7 @@ Documentation | SQL
 - Identifying high-demand zones and borough-level origin-destination patterns
 - Examining trip characteristics across geographical areas
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 13. Advanced Analytical SQL
 
@@ -164,7 +164,7 @@ Documentation | SQL
 - Comparing individual zones against group-level averages
 - Applying window functions for analytical comparisons and rankings
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 14. Repeatable Data Engineering Pipeline
 
@@ -176,7 +176,7 @@ Documentation | SQL
 - Handling existing output files during repeated execution
 - Exploring repeatability and idempotency in local data pipelines
 
-Documentation | Python | SQL Validation
+[Documentation](docs/) | [Python](python/) | [SQL Validation](sql/)
 
 ### 15. Final Analytical Synthesis and Learning Review
 
@@ -188,7 +188,7 @@ Documentation | Python | SQL Validation
 - Bringing data quality observations into the final analysis
 - Validating relationships between raw, cleaned, and enriched datasets
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 16. Dimensional Modeling and Data Warehouse
 
@@ -200,7 +200,7 @@ Documentation | SQL
 - Validating fact-table row counts, financial totals, duplicate trip keys, and dimension references
 - Inspecting the resulting warehouse schema and understanding the distinction between SQL validation and database-enforced constraints
 
-Documentation | SQL | Python
+[Documentation](docs/16_dimensional_modeling_star_schema.md) | [SQL](sql/16_build_taxi_warehouse.sql) | [Python](python/16_build_taxi_warehouse.py)
 
 ### 17. OLAP Operations
 
@@ -210,7 +210,7 @@ Documentation | SQL | Python
 - Understanding pivoting through SQL aggregation
 - Using fact and dimension tables to perform multidimensional analysis
 
-Documentation | SQL
+[Documentation](docs/) | [SQL](sql/)
 
 ### 18. Incremental Data Loading
 
@@ -222,7 +222,7 @@ Documentation | SQL
 - Validating inserted records, financial totals, and dimension references
 - Implementing transaction-based loading and rollback handling
 
-Documentation | SQL | Python
+[Documentation](docs/) | [SQL](sql/) | [Python](python/)
 
 ## Learning Reviews
 
@@ -274,7 +274,7 @@ The fact table contains one record per enriched source trip record.
 
 Validation included comparing source and warehouse row counts, checking financial aggregates, checking duplicate trip keys, and verifying dimension references. All validation checks passed during the initial warehouse build.
 
-The warehouse also provides the foundation for OLAP queries and subsequent incremental loading exercises.
+The warehouse provides the foundation for OLAP queries and subsequent incremental loading exercises.
 
 ## Technologies
 
@@ -310,8 +310,7 @@ data-lab/
 │   ├── ...
 │   ├── 15_final_analytical_synthesis_and_learning_review.md
 │   ├── 16_dimensional_modeling_star_schema.md
-│   ├── 17_olap_operations.md
-│   └── 18_incremental_data_loading.md
+│   └── ...
 └── README.md
 ```
 
@@ -319,7 +318,7 @@ The data directory contains local datasets that are excluded from Git. SQL queri
 
 ## Workflow
 
-The general approach for each learning iteration is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis or implement the relevant data engineering concepts.
+The general approach for each learning iteration is to understand the dataset first, investigate its quality, process it when necessary, and then perform analysis.
 
 Queries, scripts, and findings are documented so that the work can be reproduced and revisited later.
 
@@ -335,6 +334,4 @@ This repository will continue to grow as I explore databases, data pipelines, an
 
 ## Future Work
 
-The learning journey will continue with physical data organization, partitioning, query optimization, advanced data engineering, API ingestion, ETL/ELT, workflow orchestration, distributed processing, cloud data platforms, streaming systems, and eventually machine learning.
-
-The goal is to progress from analyzing datasets and building local data pipelines toward understanding and implementing reliable, scalable data systems.
+The learning journey will continue with more advanced data cleaning, transformation, exploratory analysis, data engineering pipelines, data warehousing, distributed processing, and eventually machine learning.
